@@ -1,0 +1,31 @@
+# mac
+.DS_STORE
+
+# vscode
+.vscode
+
+# venvs
+.venvs
+venvs
+
+# python
+.ipynb_checkpoints
+
+# personal conventions
+out.txt
+out.csv
+out.json
+out2.json
+out3.json
+out4.json
+temp.txt
+temp.ipynb
+
+# dbt
+target/
+dbt_packages/
+
+# logs
+logs
+*snowsql*log*
+
