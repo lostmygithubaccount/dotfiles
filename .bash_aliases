@@ -1,3 +1,13 @@
+# export PATH
+export PATH="/usr/bin:$PATH" # ???
+
+# fine
+export EDITOR="vi"
+
+# work
+export org="dbt-labs"
+export ORG=$org
+
 alias webup="npx docusaurus start"
 
 # vscode annoyance
@@ -38,6 +48,7 @@ alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_inst
 alias jsonp="python -m json.tool"
 
 # venvs
+alias venvs="cd ~/venvs"
 alias venv="python -m venv"
 alias off="deactivate"
 alias main="source ~/venvs/main/bin/activate"
@@ -51,5 +62,3 @@ alias qt="source ~/venvs/qt/bin/activate"
 alias ml="source ~/venvs/ml/bin/activate"
 alias adb="source ~/venvs/adb/bin/activate"
 alias debug="source ~/venvs/debug/bin/activate"
-
-
