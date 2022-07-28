@@ -10,5 +10,5 @@ export ORG=$org
 
 # aliases
 if [ -f ~/.bash-aliases ]; then
-. ~/.bash-aliases
+    source ~/.bash-aliases
 fi
