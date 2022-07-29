@@ -1,5 +1,4 @@
 set number
-syntax on
 
 set expandtab
 

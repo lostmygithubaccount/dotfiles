@@ -8,8 +8,6 @@ export EDITOR="vi"
 export org="dbt-labs"
 export ORG=$org
 
-alias webup="npx docusaurus start"
-
 # vscode annoyance
 alias exit="exit 0"
 
@@ -28,9 +26,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # quick mafs 
-alias ali="vi ~/.bash_aliases"
+alias ali="code ~/.bash_aliases"
 alias update="source ~/.bash_aliases && git config --global core.excludesfile ~/.gitignore"
-alias gitignore="vi ~/.gitignore"
+alias gitignore="code ~/.gitignore"
 
 # make life easier 
 alias du="du -h -d1"
@@ -51,14 +49,3 @@ alias jsonp="python -m json.tool"
 alias venvs="cd ~/venvs"
 alias venv="python -m venv"
 alias off="deactivate"
-alias main="source ~/venvs/main/bin/activate"
-alias docsdev="source ~/venvs/docsdev/bin/activate"
-alias dbt-py="source ~/venvs/dbt-py/bin/activate"
-alias ddb="source ~/venvs/ddb/bin/activate"
-alias psql-ml="source ~/venvs/psql-ml/bin/activate"
-alias hack="source ~/venvs/hack/bin/activate"
-alias snowy="source ~/venvs/snowy/bin/activate"
-alias qt="source ~/venvs/qt/bin/activate"
-alias ml="source ~/venvs/ml/bin/activate"
-alias adb="source ~/venvs/adb/bin/activate"
-alias debug="source ~/venvs/debug/bin/activate"
