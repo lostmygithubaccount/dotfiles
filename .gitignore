@@ -29,3 +29,22 @@ dbt_packages/
 logs
 *snowsql*log*
 
+# repos
+actions
+core-gh-project-testing
+dbt-bigquery
+dbt-core
+dbt-redshift
+dbt-rpc
+dbt-server
+dbt-snowflake
+dbt-spark
+dbt-starter-project
+dbt-utils
+docs.getdbt.com
+internal-analytics
+jaffle_shop
+jaffle_shop_duckdb
+scripts
+work
+gists
