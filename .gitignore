@@ -39,6 +39,7 @@ dbt-rpc
 dbt-server
 dbt-snowflake
 dbt-spark
+dbt-databricks
 dbt-starter-project
 dbt-utils
 docs.getdbt.com
