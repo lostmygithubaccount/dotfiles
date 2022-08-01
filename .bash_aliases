@@ -41,8 +41,8 @@ alias find="find . -name"
 # quick project access
 
 # python stuff
-alias python="python3"
-alias pip="pip3"
+#alias python="python3"
+#alias pip="pip3"
 alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 #alias python="/usr/local/opt/python@3.9/bin/python3"
 #alias pip="/usr/local/opt/python@3.9/bin/pip3"
