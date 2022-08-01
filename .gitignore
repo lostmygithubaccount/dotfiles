@@ -9,6 +9,7 @@
 venvs
 
 # python
+__pycache__
 .ipynb_checkpoints
 
 # personal conventions
