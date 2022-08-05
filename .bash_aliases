@@ -3,6 +3,7 @@ source /workspaces/codyspace/git.sh
 
 # export PATH
 export PATH="/usr/bin:$PATH" # ???
+export PATH="/vscode/home/bin:$PATH" # snowsql at least
 
 # fine
 export EDITOR="vi"
