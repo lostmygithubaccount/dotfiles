@@ -55,7 +55,7 @@ output_format = psql
 # Keybindings: Possible values: emacs, vi.
 # Emacs mode: Ctrl-A is home, Ctrl-E is end. All emacs keybindings are available in the REPL.
 # When Vi mode is enabled you can use modal editing features offered by Vi in the REPL.
-key_bindings = emacs
+key_bindings = vi
 
 # OCSP Fail Open Mode.
 # The only OCSP scenario which will lead to connection failure would be OCSP response with a
