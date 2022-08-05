@@ -15,6 +15,9 @@ export ORG=$org
 # vscode annoyance
 alias exit="exit 0"
 
+# snowy
+alias snowsql="snowsql --authenticator externalbrowser"
+
 # time savers 
 alias v="vi"
 alias l="less"
