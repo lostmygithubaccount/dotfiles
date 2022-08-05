@@ -21,7 +21,8 @@ alias t="tree -aFC"
 alias tl="tree -L 1 -aFC"
 alias tt="tree -L 2 -aFC"
 alias ttt="tree -L 3 -aFC"
-alias ls="ls -1pG -a"
+alias ls="ls -1pG -a --color"
+alias grep="grep --color"
 
 # navigation
 alias ..="cd .."
