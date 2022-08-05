@@ -1,0 +1,23 @@
+snowflake:
+  target: dev
+  outputs:
+    dev:
+      account: ska67070
+      authenticator: externalbrowser
+      database: analytics
+      role: transformer
+      schema: dbt_cody
+      threads: 8
+      type: snowflake
+      user: cody.peterson@fishtownanalytics.com
+      warehouse: transforming
+    prod:
+      account: kw27752
+      authenticator: externalbrowser
+      database: analytics
+      role: transformer
+      schema: dbt_cody
+      threads: 8
+      type: snowflake
+      user: cody.peterson
+      warehouse: transforming
