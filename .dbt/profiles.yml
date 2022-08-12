@@ -1,23 +1,35 @@
+bigquery:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      schema: dbt_cody
+      threads: 8
+      execution_project: dbt-test-env
+      dataproc_region: us-central1
+      gcs_bucket: python-model-test
+      dataproc_cluster_name: dbt-test-1
 snowflake:
   target: dev
   outputs:
     dev:
-      account: ska67070
+      type: snowflake
       authenticator: externalbrowser
+      account: ska67070
       database: analytics
       role: transformer
       schema: dbt_cody
       threads: 8
-      type: snowflake
       user: cody.peterson@fishtownanalytics.com
       warehouse: transforming
     prod:
-      account: kw27752
+      type: snowflake
       authenticator: externalbrowser
+      account: kw27752
       database: analytics
       role: transformer
       schema: dbt_cody
       threads: 8
-      type: snowflake
       user: cody.peterson
       warehouse: transforming
