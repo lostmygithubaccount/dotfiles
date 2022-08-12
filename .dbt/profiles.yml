@@ -6,7 +6,8 @@ bigquery:
       method: oauth
       schema: dbt_cody
       threads: 8
-      execution_project: dbt-test-env
+      project: dbt-test-env
+      #execution_project: dbt-test-env
       dataproc_region: us-central1
       gcs_bucket: python-model-test
       dataproc_cluster_name: dbt-test-1
