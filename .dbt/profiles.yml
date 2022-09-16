@@ -20,7 +20,7 @@ databricks:
       schema: dbt_cody
       host: dbc-c7c89cba-cf9b.cloud.databricks.com
       token: "{{ env_var('SA_ADB_PAT') }}"
-      cluster: 0915-155741-or4313r9
+      cluster: 0830-163228-q22s4sv5
       # optional
       user: cody.peterson@dbtlabs.com
       connect_timeout: 60       # default 10
