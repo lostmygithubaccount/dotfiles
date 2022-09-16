@@ -11,6 +11,20 @@ bigquery:
       dataproc_region: us-central1
       gcs_bucket: python-model-test
       dataproc_cluster_name: dbt-test-1
+databricks:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: http
+      schema: dbt_cody
+      host: dbc-c7c89cba-cf9b.cloud.databricks.com
+      token: "{{ env_var('SA_ADB_PAT') }}"
+      cluster: 0915-155741-or4313r9
+      # optional
+      user: cody.peterson@dbtlabs.com
+      connect_timeout: 60       # default 10
+      connect_retries: 5        # default 0 
 snowflake:
   target: dev
   outputs:
