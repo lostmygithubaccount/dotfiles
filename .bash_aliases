@@ -56,4 +56,5 @@ alias jsonp="python -m json.tool"
 # venvs
 alias venvs="cd ~/venvs"
 alias venv="python -m venv"
+alias snowy="source ~/venvs/snowy/bin/activate"
 alias off="deactivate"
