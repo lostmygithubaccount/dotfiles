@@ -1,5 +1,5 @@
 # git hack
-source /workspaces/codyspace/git.sh
+#source /workspaces/codyspace/git.sh
 
 # export PATH
 export PATH="/usr/bin:$PATH" # ???
