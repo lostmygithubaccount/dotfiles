@@ -18,6 +18,17 @@ databricks:
       type: spark
       method: http
       schema: dbt_cody
+      host: dbc-9274a712-595c.cloud.databricks.com
+      token: "{{ env_var('ADB_PAT') }}"
+      cluster: 0727-103414-fkdt7p1z
+      # optional
+      user: cody.peterson@dbtlabs.com
+      connect_timeout: 60       # default 10
+      connect_retries: 5        # default 0 
+    sa:
+      type: spark
+      method: http
+      schema: dbt_cody
       host: dbc-c7c89cba-cf9b.cloud.databricks.com
       token: "{{ env_var('SA_ADB_PAT') }}"
       cluster: 0830-163228-q22s4sv5
