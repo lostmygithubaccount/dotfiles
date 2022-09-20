@@ -1,6 +1,11 @@
 # git hack
 source /workspaces/codyspace/git.sh
 
+# vscode path
+export cs="/workspaces/codyspace"
+export cody="/workspaces/codyspace"
+export codyspace="/workspaces/codyspace"
+
 # export PATH
 export PATH="/usr/bin:$PATH" # ???
 export PATH="/home/vscode/bin:$PATH" # snowsql at least
