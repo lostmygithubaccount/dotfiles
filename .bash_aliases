@@ -60,7 +60,7 @@ alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_inst
 alias jsonp="python -m json.tool"
 
 # venvs
-alias venvs="cd ~/venvs"
+alias venvs="cd $cs/venvs"
 alias venv="python -m venv"
-alias snowy="source ~/venvs/snowy/bin/activate"
+alias snowy="source $cs/venvs/snowy/bin/activate"
 alias off="deactivate"
