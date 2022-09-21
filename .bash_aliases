@@ -8,7 +8,8 @@ export codyspace="/workspaces/codyspace"
 
 # export PATH
 export PATH="/usr/bin:$PATH" # ???
-export PATH="/home/vscode/bin:$PATH" # snowsql at least
+export PATH="/root/bin:$PATH" # for snowsql
+#export PATH="/home/vscode/bin:$PATH" # snowsql, old
 
 # fine
 export EDITOR="vi"
