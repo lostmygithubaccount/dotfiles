@@ -24,6 +24,9 @@ alias exit="exit 0"
 # snowy
 alias snowsql="snowsql --authenticator externalbrowser"
 
+# dbt stuff
+alias dbtdocs="dbt docs generate && dbt docs serve"
+
 # time savers 
 alias v="vi"
 alias l="less"
