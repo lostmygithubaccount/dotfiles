@@ -1,6 +1,9 @@
 # git hack
 source /workspaces/codyspace/git.sh
 
+# YOU CANT SEE ME
+export DO_NOT_TRACK=1
+
 # vscode path
 export cs="/workspaces/codyspace"
 export cody="/workspaces/codyspace"

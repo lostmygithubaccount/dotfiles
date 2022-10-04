@@ -1,3 +1,6 @@
+config:
+  send_anonymous_usage_stats: False
+
 bigquery:
   target: dev
   outputs:
@@ -15,16 +18,30 @@ databricks:
   target: dev
   outputs:
     dev:
+      type: databricks
+      schema: dbt_cody
+      host: dbc-9274a712-595c.cloud.databricks.com
+      http_path: sql/protocolv1/o/733816330658499/0930-015510-ur6hdc0p # Cody Cluster
+      #http_path: sql/protocolv1/o/733816330658499/0411-132815-9avnz2eh # Ad Hoc?
+      token: "{{ env_var('ADB_PAT') }}"
+      threads: 8
+      # optional
+      user: cody.peterson@dbtlabs.com
+      #connect_timeout: 60       # default 10
+      #connect_retries: 5        # default 0 
+    dev_old:
       type: spark
       method: http
       schema: dbt_cody
       host: dbc-9274a712-595c.cloud.databricks.com
       token: "{{ env_var('ADB_PAT') }}"
-      cluster: 0727-103414-fkdt7p1z
+      cluster: 0930-015510-ur6hdc0p # Cody Cluster
+      #cluster: 0727-103414-fkdt7p1z # Ad Hoc
+      #cluster: 0411-132815-9avnz2eh # Integration Testing
       # optional
       user: cody.peterson@dbtlabs.com
-      connect_timeout: 60       # default 10
-      connect_retries: 5        # default 0 
+      #connect_timeout: 60       # default 10
+      #connect_retries: 5        # default 0 
     sa:
       type: spark
       method: http
@@ -49,6 +66,7 @@ snowflake:
       threads: 8
       user: cody.peterson@fishtownanalytics.com
       warehouse: transforming
+      #warehouse: high_mem_wh
     prod:
       type: snowflake
       authenticator: externalbrowser
