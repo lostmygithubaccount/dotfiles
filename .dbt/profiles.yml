@@ -13,7 +13,9 @@ bigquery:
       #execution_project: dbt-test-env
       dataproc_region: us-central1
       gcs_bucket: python-model-test
-      dataproc_cluster_name: dbt-test-1
+      jar_file_uri: gs://spark-lib/bigquery/spark-bigquery-latest.jar
+
+      #dataproc_cluster_name: dbt-test-1
 databricks:
   target: dev
   outputs:
