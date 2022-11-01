@@ -56,6 +56,10 @@ alias loc="cloc ."
 alias find="find . -name"
 
 # quick project access
+alias notes="cd $cs/notes"
+alias notesc="code $cs/notes"
+alias todo="cd $cs/todo"
+alias todoc="code $cs/todo"
 
 # python stuff
 #alias python="python3"
