@@ -14,6 +14,10 @@ export PYTHONBREAKPOINT="IPython.embed"
 export PYTHONDONTWRITEBYTECODE=1
 export OLLAMA_HOME="$HOME/.ollama"
 
+## Locations
+export DEV=$HOME/code/ascend-io/ascend-dev
+export DKDC=$HOME/code/lostmygithubaccount/dkdc
+
 ## Homebrew
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/opt/homebrew/bin:$PATH"
