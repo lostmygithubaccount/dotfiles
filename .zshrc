@@ -48,7 +48,7 @@ zstyle ':vcs_info:*' stagedstr '%F{118}+%f'
 setopt PROMPT_SUBST
 
 # Colors with fallback for limited terminals
-if [[ "$TERM" =~ "256color" ]] || [[ -n "$COLORTERM" ]] || [[ "$TERM" == "xterm-kitty" ]]; then
+if [[ "$TERM" =~ "256color" ]] || [[ -n "$COLORTERM" ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ $(tput colors 2>/dev/null) -ge 256 ]]; then
     # 256-color palette
     local violet='%F{99}'      # Bright violet
     local purple='%F{135}'     # Purple
@@ -58,8 +58,8 @@ if [[ "$TERM" =~ "256color" ]] || [[ -n "$COLORTERM" ]] || [[ "$TERM" == "xterm-
     local red='%F{196}'        # Bright red
     local white='%F{255}'      # White
 else
-    # Basic 16-color fallback
-    local violet='%F{magenta}' # Magenta
+    # Basic 16-color fallback - use different colors for distinction
+    local violet='%F{blue}'    # Blue instead of magenta
     local purple='%F{magenta}' # Magenta
     local cyan='%F{cyan}'      # Cyan
     local green='%F{green}'    # Green
