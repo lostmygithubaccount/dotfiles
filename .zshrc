@@ -47,15 +47,27 @@ zstyle ':vcs_info:*' stagedstr '%F{118}+%f'
 # Prompt configuration
 setopt PROMPT_SUBST
 
-# Colors (using 256-color palette)
-local violet='%F{99}'      # Bright violet
-local purple='%F{135}'     # Purple
-local cyan='%F{87}'        # Bright cyan
-local green='%F{118}'      # Bright green
-local yellow='%F{226}'     # Bright yellow
-local red='%F{196}'        # Bright red
-local white='%F{255}'      # White
-local reset='%f'           # Reset color
+# Colors with fallback for limited terminals
+if [[ "$TERM" =~ "256color" ]] || [[ -n "$COLORTERM" ]] || [[ "$TERM" == "xterm-kitty" ]]; then
+    # 256-color palette
+    local violet='%F{99}'      # Bright violet
+    local purple='%F{135}'     # Purple
+    local cyan='%F{87}'        # Bright cyan
+    local green='%F{118}'      # Bright green
+    local yellow='%F{226}'     # Bright yellow
+    local red='%F{196}'        # Bright red
+    local white='%F{255}'      # White
+else
+    # Basic 16-color fallback
+    local violet='%F{magenta}' # Magenta
+    local purple='%F{magenta}' # Magenta
+    local cyan='%F{cyan}'      # Cyan
+    local green='%F{green}'    # Green
+    local yellow='%F{yellow}'  # Yellow
+    local red='%F{red}'        # Red
+    local white='%F{white}'    # White
+fi
+local reset='%f'               # Reset color
 
 # Container detection
 container_indicator() {
