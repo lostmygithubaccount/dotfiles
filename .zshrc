@@ -1,8 +1,10 @@
 # Standard stuff
-source $HOME/.env
+if [ -f "$HOME/.env" ]; then
+    source "$HOME/.env"
+fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
 
 # Ascend-specific stuff
