@@ -519,6 +519,17 @@ function off() {
   deactivate
 }
 
+function fmt() {
+  ruff check --fix "$@"
+  ruff check --select I --fix "$@"
+  ruff format "$@"
+}
+
+function fmti() {
+  ruff check --select I --fix "$@"
+  ruff format "$@"
+}
+
 ## Advanced Git
 function gitfucked() {
     repo_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
