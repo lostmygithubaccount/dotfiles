@@ -92,7 +92,7 @@ fish_style_pwd() {
     fi
     
     # If path is short enough, return as-is
-    if [[ ${#pwd_path} -le 40 ]]; then
+    if [[ ${#pwd_path} -le 32 ]]; then
         echo "$pwd_path"
         return
     fi
