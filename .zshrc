@@ -38,8 +38,13 @@ compinit
 
 # Enable version control info
 autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{99}%b%f%c%u'
+precmd() { 
+    vcs_info 
+    # Print timestamp separator
+    local timestamp=$(TZ=UTC date '+%H:%M:%S')
+    print -P "%F{240}─── ${timestamp} UTC ───%f"
+}
+zstyle ':vcs_info:git:*' formats ' (%F{99}%b%f%c%u)'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '%F{196}*%f'
 zstyle ':vcs_info:*' stagedstr '%F{118}+%f'
@@ -87,7 +92,7 @@ fish_style_pwd() {
     fi
     
     # If path is short enough, return as-is
-    if [[ ${#pwd_path} -le 30 ]]; then
+    if [[ ${#pwd_path} -le 40 ]]; then
         echo "$pwd_path"
         return
     fi
@@ -97,7 +102,7 @@ fish_style_pwd() {
     local result=""
     local parts_count=${#parts}
     
-    if [[ $parts_count -le 3 ]]; then
+    if [[ $parts_count -le 4 ]]; then
         echo "$pwd_path"
         return
     fi
@@ -105,14 +110,22 @@ fish_style_pwd() {
     # Always show first part (~ or /)
     result="${parts[1]}"
     
-    # Collapse middle parts to first character
-    for ((i=2; i<parts_count; i++)); do
+    # Always show second part in full if it exists
+    if [[ -n "${parts[2]}" ]]; then
+        result="$result/${parts[2]}"
+    fi
+    
+    # Collapse middle parts to first character (skip first, second, and last two)
+    for ((i=3; i<parts_count-1; i++)); do
         if [[ -n "${parts[i]}" ]]; then
             result="$result/${parts[i]:0:1}"
         fi
     done
     
-    # Always show last part in full
+    # Always show last two parts in full
+    if [[ parts_count -ge 2 && -n "${parts[parts_count-1]}" ]]; then
+        result="$result/${parts[parts_count-1]}"
+    fi
     if [[ -n "${parts[parts_count]}" ]]; then
         result="$result/${parts[parts_count]}"
     fi
@@ -127,5 +140,6 @@ PROMPT+="${white}@${reset}"                  # @
 PROMPT+="${purple}%m${reset}"                # Hostname
 PROMPT+=" ${cyan}\$(fish_style_pwd)${reset}" # Directory
 PROMPT+='${vcs_info_msg_0_}'                 # Git info
-PROMPT+=" ${violet}❯${reset} "               # Prompt character
+PROMPT+=$'\n'                                # Newline
+PROMPT+="${violet}❯${reset} "                # Prompt character
 
