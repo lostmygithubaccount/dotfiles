@@ -27,9 +27,12 @@ fi
 
 # Temporary helpers
 function dct() {
-  devcontainer --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git "$@"
+  devcontainer up --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git "$@"
 }
 
+function dcz() {
+  devcontainer exec zsh "$@"
+}
 
 # Functions
 ## Config
