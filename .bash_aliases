@@ -25,6 +25,12 @@ else
     export PATH="$HOME/.linuxbrew/bin:$PATH"
 fi
 
+# Temporary helpers
+function dct() {
+  devcontainer --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git "$@"
+}
+
+
 # Functions
 ## Config
 function ali() {
