@@ -106,7 +106,7 @@ function d() {
     cd $HOME/code/ascend-io/ascend-dev
 }
 
-function gch() {
+function ghh() {
     cd $HOME/code/lostmygithubaccount
 }
 
