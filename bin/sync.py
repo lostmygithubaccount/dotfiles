@@ -88,6 +88,7 @@ def should_ignore_root_item(path: Path, base_path: Path) -> bool:
                     return True
             elif "*" in pattern:
                 import fnmatch
+
                 if fnmatch.fnmatch(name, pattern):
                     return True
             elif name == pattern:
@@ -106,6 +107,7 @@ def should_ignore_root_item(path: Path, base_path: Path) -> bool:
                 return True
         elif "*" in pattern:
             import fnmatch
+
             if fnmatch.fnmatch(name, pattern):
                 return True
         elif name == pattern:
