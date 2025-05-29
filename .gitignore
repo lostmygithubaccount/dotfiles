@@ -25,6 +25,8 @@ trees
 # tmp
 .tmp
 tmp
+
+# data
 data
 *.csv*
 *.ddb*
