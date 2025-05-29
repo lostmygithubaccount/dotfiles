@@ -37,36 +37,32 @@ function dcz() {
 # Functions
 ## Config
 function ali() {
-  v ~/.bash_aliases
+  v $HOME/.bash_aliases
 }
 
 function update() {
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        . ~/.zshrc
-    else
-        . ~/.bashrc
-    fi
+    . $HOME/.zshrc
     git config --global core.excludesfile ~/.gitignore
 }
 
 function gitignore() {
-  v ~/.gitignore
+  v $HOME/.gitignore
 }
 
 function vimrc() {
-  v ~/.config/nvim/init.lua
+  v $HOME/.config/nvim/init.lua
 }
 
 function tmuxc() {
-  v ~/.tmux.conf
+  v $HOME/.tmux.conf
 }
 
 function ipyrc() {
-  v ~/.ipython/profile_default/ipython_config.py
+  v $HOME/.ipython/profile_default/ipython_config.py
 }
 
 function uvrc() {
-  v ~/.config/uv/uv.toml
+  v $HOME/.config/uv/uv.toml
 }
 
 ## Movement
@@ -130,19 +126,19 @@ function dkdc.io () {
 }
 
 function dotfiles() {
-  cd ~/code/lostmygithubaccount/dotfiles
+  cd $HOME/code/lostmygithubaccount/dotfiles
 }
 
 function files() {
-  cd ~/code/lostmygithubaccount/files
+  cd $HOME/code/lostmygithubaccount/files
 }
 
 function p() {
-  cd ~/code/ascend-io/product
+  cd $HOME/code/ascend-io/product
 }
 
 function workspaces() {
-  cd ~/code/ascend-io/ascend-dev/workspaces
+  cd $HOME/code/ascend-io/ascend-dev/workspaces
 }
 
 function ws() {
@@ -150,15 +146,15 @@ function ws() {
 }
 
 function pri() {
-  v ~/code/lostmygithubaccount/files/pri.md
+  v $HOME/code/lostmygithubaccount/files/pri.md
 }
 
 function todo() {
-  v ~/code/lostmygithubaccount/files/todo.md
+  v $HOME/code/lostmygithubaccount/files/todo.md
 }
 
 function notes() {
-  v ~/code/lostmygithubaccount/files/notes.md
+  v $HOME/code/lostmygithubaccount/files/notes.md
 }
 
 ## Core functionality
