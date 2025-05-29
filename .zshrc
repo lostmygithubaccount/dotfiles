@@ -42,7 +42,7 @@ precmd() {
     vcs_info 
     # Print timestamp separator
     local timestamp=$(TZ=UTC date '+%H:%M:%S')
-    print -P "%F{240}─── ${timestamp} UTC ───%f"
+    print -P "%F{198}─── ${timestamp} UTC ───%f"
 }
 zstyle ':vcs_info:git:*' formats ' (%F{99}%b%f%c%u)'
 zstyle ':vcs_info:*' check-for-changes true
