@@ -38,41 +38,31 @@ compinit
 
 # Enable version control info
 autoload -Uz vcs_info
-precmd() { 
-    vcs_info 
-    # Print timestamp separator
-    local timestamp=$(TZ=UTC date '+%Y/%m/%d %H:%M:%S')
-    print -P "%F{198}─── ${timestamp} UTC ───%f"
-}
-zstyle ':vcs_info:git:*' formats ' (%F{99}%b%f%c%u)'
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b%c%u'
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '%F{196}*%f'
-zstyle ':vcs_info:*' stagedstr '%F{118}+%f'
+zstyle ':vcs_info:*' unstagedstr '%F{160}*%f'  # Darker red for better contrast on pink
+zstyle ':vcs_info:*' stagedstr '%F{30}+%f'     # Darker cyan for better contrast
 
 # Prompt configuration
 setopt PROMPT_SUBST
 
-# Colors with fallback for limited terminals
-if [[ "$TERM" =~ "256color" ]] || [[ -n "$COLORTERM" ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ $(tput colors 2>/dev/null) -ge 256 ]]; then
-    # 256-color palette
-    local violet='%F{99}'      # Bright violet
-    local purple='%F{135}'     # Purple
-    local cyan='%F{87}'        # Bright cyan
-    local green='%F{118}'      # Bright green
-    local yellow='%F{226}'     # Bright yellow
-    local red='%F{196}'        # Bright red
-    local white='%F{255}'      # White
-else
-    # Basic 16-color fallback - use different colors for distinction
-    local violet='%F{blue}'    # Blue instead of magenta
-    local purple='%F{magenta}' # Magenta
-    local cyan='%F{cyan}'      # Cyan
-    local green='%F{green}'    # Green
-    local yellow='%F{yellow}'  # Yellow
-    local red='%F{red}'        # Red
-    local white='%F{white}'    # White
-fi
-local reset='%f'               # Reset color
+# Modern gradient powerline colors  
+local bg_time='%K{240}'       # Dark grey background for timestamp
+local fg_time='%F{255}'       # White text
+local bg_user='%K{99}'        # Purple background
+local fg_user='%F{255}'       # White text
+local bg_path='%K{135}'       # Bright magenta background  
+local fg_path='%F{255}'       # White text
+local bg_git_clean='%K{87}'   # Cyan background for clean
+local fg_git_clean='%F{0}'    # Black text
+local bg_git_dirty='%K{213}'  # Subtle pink background for dirty  
+local fg_git_dirty='%F{0}'    # Black text
+local reset='%k%f'            # Reset all colors
+
+# Powerline separators
+local sep_right=''           # Right-pointing triangle
+local sep_left=''            # Left-pointing triangle
 
 # Container detection
 container_indicator() {
@@ -133,13 +123,43 @@ fish_style_pwd() {
     echo "$result"
 }
 
-# Build the prompt
-PROMPT='$(container_indicator)'               # Container indicator
-PROMPT+="${violet}%n${reset}"                # Username
-PROMPT+="${white}@${reset}"                  # @
-PROMPT+="${purple}%m${reset}"                # Hostname
-PROMPT+=" ${cyan}\$(fish_style_pwd)${reset}" # Directory
-PROMPT+='${vcs_info_msg_0_}'                 # Git info
-PROMPT+=$'\n'                                # Newline
-PROMPT+="${violet}❯${reset} "                # Prompt character
+# Git status helper with push/pull arrows and status indicators
+git_prompt_info() {
+    if [[ -n "${vcs_info_msg_0_}" ]]; then
+        local git_info="${vcs_info_msg_0_}"
+        local arrows=""
+        
+        # Check for push/pull status
+        local ahead_behind=$(git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
+        if [[ -n "$ahead_behind" ]]; then
+            local ahead=$(echo $ahead_behind | cut -f1)
+            local behind=$(echo $ahead_behind | cut -f2)
+            [[ "$ahead" -gt 0 ]] && arrows+="↑"
+            [[ "$behind" -gt 0 ]] && arrows+="↓"
+        fi
+        
+        # Check if repo has any changes (staged or unstaged)  
+        if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+            echo "${bg_git_dirty}${fg_git_dirty} ${git_info}${arrows} ${reset}%F{213}${sep_right}${reset}"
+        else
+            echo "${bg_git_clean}${fg_git_clean} ${git_info}${arrows} ${reset}%F{87}${sep_right}${reset}"
+        fi
+    else
+        echo "%F{135}${sep_right}${reset}"
+    fi
+}
+
+# Timestamp helper
+get_timestamp() {
+    TZ=UTC date '+%Y/%m/%d %H:%M:%S'
+}
+
+# Build the modern gradient powerline prompt (single line + newline prompt)
+PROMPT='$(container_indicator)'                                                          # Container indicator
+PROMPT+="${bg_user}${fg_user} %n@%m ${reset}%F{99}${sep_right}${reset}"               # Purple user@hostname segment  
+PROMPT+="${bg_path}${fg_path} \$(fish_style_pwd) ${reset}%F{135}${sep_right}${reset}" # Magenta path segment
+PROMPT+="\$(git_prompt_info)"                                                          # Cyan/pink git segment
+PROMPT+="${bg_time}${fg_time} \$(get_timestamp) ${reset}%F{240}${sep_right}${reset}"  # Grey timestamp segment at end
+PROMPT+=$'\n'                                                                          # Newline
+PROMPT+="%F{99}❯%f "                                                                   # Violet prompt character
 
