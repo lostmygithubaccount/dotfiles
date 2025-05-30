@@ -165,6 +165,10 @@ function notes() {
 }
 
 ## Core functionality
+function c() {
+    clear
+}
+
 function todos () {
     grep -i "TODO" "$@"
 }
