@@ -165,6 +165,10 @@ function notes() {
 }
 
 ## Core functionality
+function e() {
+    exit
+}
+
 function c() {
     clear
 }
