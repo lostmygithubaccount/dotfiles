@@ -129,6 +129,22 @@ git_prompt_info() {
         local git_info="${vcs_info_msg_0_}"
         local arrows=""
         
+        # Background fetch logic (every 15 minutes)
+        local cache_file=".git/fetch_cache"
+        local current_time=$(date +%s)
+        local fetch_interval=300  # 5 minutes
+        
+        if [[ -f "$cache_file" ]]; then
+            local last_fetch=$(cat "$cache_file" 2>/dev/null || echo 0)
+            if (( current_time - last_fetch > fetch_interval )); then
+                # Time to fetch - do it in background silently
+                (git fetch --all &>/dev/null && echo "$current_time" > "$cache_file") &
+            fi
+        else
+            # No cache file, create it and fetch
+            (git fetch --all &>/dev/null && echo "$current_time" > "$cache_file") &
+        fi
+        
         # Check for push/pull status
         local ahead_behind=$(git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
         if [[ -n "$ahead_behind" ]]; then
