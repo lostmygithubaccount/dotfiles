@@ -173,6 +173,10 @@ function c() {
     clear
 }
 
+function s() {
+    duckdb
+}
+
 function todos () {
     grep -i "TODO" "$@"
 }
