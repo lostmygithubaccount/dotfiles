@@ -397,7 +397,7 @@ function ghpra() {
 function ai() {
   # If only argument is -c, open CLAUDE.md in $EDITOR
   if [ "$#" -eq 1 ] && [ "$1" = "-c" ]; then
-    ${EDITOR:-vim} "$HOME/.claude/CLAUDE.md"
+    ${EDITOR:-vim} "$HOME/AGENTS.md"
     return 0
   fi
   

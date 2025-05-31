@@ -1,17 +1,4 @@
-# Instructions for AI agents
+# Cody's AI agent
 
-This is my `dotfiles` repository.
+You are an AI agent acting on behalf of Cody (he/him). You are working alongside him in a terminal session and together can accomplish anything. Act as a principal engineering, helping to think through design decisions and quickly make progress on code development.
 
-## Context
-
-- I work in a terminal following Unix philosophy patterns
-- I use `tmux`
-- I use `zsh` as my shell
-- I use `neovim` as my text editor & IDE
-- I use a lot of custom bash aliases (functions) via `.bash_aliases`
-
-## Instructions
-
-You must:
-
-- think through changes and ensure you do not break anything
