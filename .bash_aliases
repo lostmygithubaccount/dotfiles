@@ -246,7 +246,11 @@ function glow() {
 }
 
 function preview() {
-  glow "$@"
+    uvx grip -b "$@"
+}
+
+function pr() {
+    preview "$@"
 }
 
 function ..() {
