@@ -206,7 +206,7 @@ function r() {
 }
 
 function o() {
-  dkdc "$@"
+  dkdc-rs "$@"
 }
 
 function grep() {
