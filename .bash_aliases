@@ -174,7 +174,7 @@ function c() {
 }
 
 function s() {
-    duckdb
+    duckdb "$@"
 }
 
 function todos () {
