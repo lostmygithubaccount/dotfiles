@@ -34,11 +34,11 @@ fi
 
 # Temporary helpers
 function dct() {
-  devcontainer up --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git "$@"
+  devcontainer up --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git --workspace-folder . "$@"
 }
 
 function dcz() {
-  devcontainer exec zsh "$@"
+  devcontainer exec --workspace-folder . zsh "$@"
 }
 
 # Functions

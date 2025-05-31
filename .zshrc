@@ -7,6 +7,9 @@ if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
+# Docker (move this?)
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 # Ascend-specific stuff
 ## Path
 export PATH="$HOME/google-cloud-sdk/bin:$PATH" # ugh
