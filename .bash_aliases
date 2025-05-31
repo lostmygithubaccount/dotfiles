@@ -246,7 +246,7 @@ function glow() {
 }
 
 function preview() {
-    uvx grip -b "$@"
+    go-grip "$@"
 }
 
 function pr() {
