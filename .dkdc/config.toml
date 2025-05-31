@@ -16,8 +16,10 @@ key = "keyboard"
 read = "kindle"
 chat = "copilot"
 music = "youtubemusic"
-cloud = "hetzner"
+cloud = "digitalocean"
 router = "mobilerouter"
+
+do = "digitalocean"
 
 pe = "productengineering"
 pc = "productcommunity"
@@ -132,3 +134,5 @@ productengineering = "https://github.com/orgs/ascend-io/projects/7"
 productcommunity = "https://github.com/orgs/ascend-io/projects/8"
 
 codespaces = "https://github.com/codespaces"
+
+digitalocean = "https://cloud.digitalocean.com"
