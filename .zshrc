@@ -132,8 +132,8 @@ git_prompt_info() {
         local git_info="${vcs_info_msg_0_}"
         local arrows=""
         
-        # Background fetch logic (every 15 minutes)
-        local cache_file=".git/fetch_cache"
+        # Background fetch logic (every 5 minutes)
+        local cache_file="$(git rev-parse --git-dir 2>/dev/null)/fetch_cache"
         local current_time=$(date +%s)
         local fetch_interval=300  # 5 minutes
         
