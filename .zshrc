@@ -20,6 +20,8 @@ ulimit -n 2560 # some bizarre issue
 eval "$(fnm env --use-on-cd --shell zsh)" # Node nonsense
 
 ## Environment variables
+export VPS_IP="178.128.12.54"
+
 export ASCEND_INFRA="$HOME/code/ascend-io/infra" # Infra repo location
 # export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 # export PYENV_ROOT="$HOME/.pyenv"
