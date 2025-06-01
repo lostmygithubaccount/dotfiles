@@ -39,7 +39,7 @@ export BASECAMP="ascend-io/basecamp"
 autoload -Uz compinit
 compinit
 
-# Enable version control info
+# Enable version control info (fast mode - with change indicators)
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b%c%u'
@@ -126,42 +126,16 @@ fish_style_pwd() {
     echo "$result"
 }
 
-# Git status helper with push/pull arrows and status indicators
+# Git status helper (fast mode - no network operations)
 git_prompt_info() {
     if [[ -n "${vcs_info_msg_0_}" ]]; then
         local git_info="${vcs_info_msg_0_}"
-        local arrows=""
         
-        # Background fetch logic (every 5 minutes)
-        local cache_file="$(git rev-parse --git-dir 2>/dev/null)/fetch_cache"
-        local current_time=$(date +%s)
-        local fetch_interval=300  # 5 minutes
-        
-        if [[ -f "$cache_file" ]]; then
-            local last_fetch=$(cat "$cache_file" 2>/dev/null || echo 0)
-            if (( current_time - last_fetch > fetch_interval )); then
-                # Time to fetch - do it in background silently
-                (git fetch --all &>/dev/null && echo "$current_time" > "$cache_file") &
-            fi
-        else
-            # No cache file, create it and fetch
-            (git fetch --all &>/dev/null && echo "$current_time" > "$cache_file") &
-        fi
-        
-        # Check for push/pull status
-        local ahead_behind=$(git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
-        if [[ -n "$ahead_behind" ]]; then
-            local ahead=$(echo $ahead_behind | cut -f1)
-            local behind=$(echo $ahead_behind | cut -f2)
-            [[ "$ahead" -gt 0 ]] && arrows+="↑"
-            [[ "$behind" -gt 0 ]] && arrows+="↓"
-        fi
-        
-        # Check if repo has any changes (staged or unstaged)  
+        # Check if repo has any changes (staged or unstaged) - but skip network operations
         if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
-            echo "${bg_git_dirty}${fg_git_dirty} ${git_info}${arrows} ${reset}%F{213}${sep_right}${reset}"
+            echo "${bg_git_dirty}${fg_git_dirty} ${git_info} ${reset}%F{213}${sep_right}${reset}"
         else
-            echo "${bg_git_clean}${fg_git_clean} ${git_info}${arrows} ${reset}%F{87}${sep_right}${reset}"
+            echo "${bg_git_clean}${fg_git_clean} ${git_info} ${reset}%F{87}${sep_right}${reset}"
         fi
     else
         echo "%F{135}${sep_right}${reset}"
