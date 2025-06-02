@@ -1,3 +1,10 @@
+# Machine type detection
+if [[ $(hostname) == *"ascend"* ]]; then
+    export MACHINE_TYPE="WORK"
+else
+    export MACHINE_TYPE="LIFE"
+fi
+
 # Exports
 ## Path
 export PATH="$HOME/.local/bin:$PATH"
@@ -157,7 +164,11 @@ function pri() {
 }
 
 function todo() {
-  v $HOME/code/lostmygithubaccount/files/todo.md
+  if [[ "$MACHINE_TYPE" == "WORK" ]]; then
+    v $HOME/code/lostmygithubaccount/files/work.md
+  else
+    v $HOME/code/lostmygithubaccount/files/life.md
+  fi
 }
 
 function notes() {
