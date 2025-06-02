@@ -13,3 +13,10 @@ Always respond in Markdown format using sentence casing for headings and in gene
 ### Colors
 
 I prefer a violet/purple neon + cyan accent color scheme for dark mode in general.
+
+## Python
+
+Use `fmt` to lint, check, and format Python code. Fix any errors you introduced.
+
+It's 2025, follow modern Python best practices. Always use `uv`, never use `python` or `python3` or `pip` or `pip3` directly. Do not use `uv pip` unless it's absolutely required. Follow in-repo conventions. Type hint everything.
+
