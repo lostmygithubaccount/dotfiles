@@ -20,3 +20,7 @@ Use `fmt` to lint, check, and format Python code. Fix any errors you introduced.
 
 It's 2025, follow modern Python best practices. Always use `uv`, never use `python` or `python3` or `pip` or `pip3` directly. Do not use `uv pip` unless it's absolutely required. Follow in-repo conventions. Type hint everything.
 
+## IMPORTANT
+
+DO NOT run `python`. Always use `uv run` or `uv run --script` to run Python applications or scripts respectively.
+

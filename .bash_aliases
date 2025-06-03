@@ -6,6 +6,9 @@ else
 fi
 
 # Exports
+## YOLO
+export PGPASSWORD="product"
+
 ## Path
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
