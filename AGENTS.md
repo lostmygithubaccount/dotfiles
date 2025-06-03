@@ -14,6 +14,10 @@ Always respond in Markdown format using sentence casing for headings and in gene
 
 I prefer a violet/purple neon + cyan accent color scheme for dark mode in general.
 
+### Use colons (:) instead of dashes/hyphens (-) for lists
+
+For bullet points, lists, or generally separating things (like code comments) prefer `TODO:` and `Constants: Data schema` instead of `TODO -` or `Constants - Data schema constants`.
+
 ## Python
 
 Use `fmt` to lint, check, and format Python code. Fix any errors you introduced.
