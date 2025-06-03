@@ -525,14 +525,6 @@ function ipy() {
   ipython
 }
 
-function dev() {
-  if [ -f "./dev.py" ]; then
-    ./dev.py
-  else
-    uvx ipython
-  fi
-}
-
 function eda() {
   python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()' -i eda.py
 }
