@@ -219,8 +219,12 @@ function r() {
   ranger "$@"
 }
 
-function o() {
+function links() {
   dkdc-links "$@"
+}
+
+function o() {
+  links "$@"
 }
 
 function grep() {
