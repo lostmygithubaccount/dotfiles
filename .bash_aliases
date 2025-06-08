@@ -220,7 +220,7 @@ function r() {
 }
 
 function o() {
-  dkdc-rs "$@"
+  dkdc-links "$@"
 }
 
 function grep() {
@@ -240,7 +240,7 @@ function top() {
 }
 
 function du() {
-  command du -h -d1 "$@"
+  command du -h -d1 "$@" | sort -h
 }
 
 function loc() {
