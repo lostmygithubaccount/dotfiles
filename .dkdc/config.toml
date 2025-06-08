@@ -38,7 +38,7 @@ adb = "azuredatabricks"
 dbx = "azuredatabricks"
 snow = "snowflake"
 
-[things]
+[links]
 # websites
 cal = "https://calendar.google.com"
 ibis = "https://ibis-project.org"
