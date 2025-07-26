@@ -41,6 +41,11 @@ else
     export LS_COLORS="di=01;36:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;34:cd=01;34:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 fi
 
+export PATH="$GHH/bin:$PATH"
+export LAKE="$GHH/lake"
+
+mkdir -p $LAKE
+
 # Temporary helpers
 function dct() {
   devcontainer up --dotfiles-repository https://github.com/lostmygithubaccount/dotfiles.git --workspace-folder . "$@"
@@ -124,6 +129,14 @@ function d() {
 
 function ghh() {
     cd $GHH
+}
+
+function bin() {
+    cd $GHH/bin
+}
+
+function lake() {
+    cd $LAKE
 }
 
 function websites () {
