@@ -308,7 +308,7 @@ function ....() {
   cd ../../..
 }
 
-# quick mafs 
+# quick mafs
 function l() {
   less "$@"
 }
@@ -358,10 +358,10 @@ function fr() {
     echo "Usage: fr <find_pattern> <replace_pattern>"
     return 1
   fi
-  
+
   find_pattern="$1"
   replace_pattern="$2"
-  
+
   # Check if we're on macOS (BSD sed) or Linux (GNU sed)
   if [[ "$(uname)" == "Darwin" ]]; then
     # macOS/BSD version - requires an extension for -i
@@ -370,7 +370,7 @@ function fr() {
     # Linux/GNU version
     grep -l "$find_pattern" * 2>/dev/null | xargs -I{} sed -i "s/$find_pattern/$replace_pattern/g" {}
   fi
-  
+
   echo "Replaced \"$find_pattern\" with \"$replace_pattern\" in matching files"
 }
 
@@ -456,13 +456,13 @@ function ai() {
     ${EDITOR:-vim} "$HOME/AGENTS.md"
     return 0
   fi
-  
+
   # Otherwise, pass all arguments to claude as before
   claude --dangerously-skip-permissions "$@"
 }
 
 function ai2() {
-  codex --full-auto "$@"
+  codex -a never "$@"
 }
 
 ## Miscellaneous
@@ -491,13 +491,13 @@ function kt() {
     kubectl "$@"
 }
 
-function kpr () 
-{ 
+function kpr ()
+{
     kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id $@
 }
 
-function kpro () 
-{ 
+function kpro ()
+{
     kpr -n ottos-expeditions $@
 }
 
@@ -643,24 +643,24 @@ function draw() {
 function mp4() {
     local input_file="$1"
     local output_file="$2"
-    
+
     # Check if input file is provided
     if [ -z "$input_file" ]; then
         echo "Error: Input file is required"
         echo "Usage: mp4 input_file [output_file]"
         return 1
     fi
-    
+
     # If output file not provided, use input name with .mp4 extension
     if [ -z "$output_file" ]; then
         # Get base name of input file without extension
         local base_name="${input_file%.*}"
         output_file="${base_name}.mp4"
     fi
-    
+
     echo "Converting $input_file to $output_file..."
     ffmpeg -i "$input_file" -c:v libsvtav1 -crf 30 -preset 8 -c:a aac -movflags +faststart "$output_file"
-    
+
     # Check if conversion was successful
     if [ $? -eq 0 ]; then
         echo "Conversion completed successfully"
@@ -674,7 +674,7 @@ function mp4() {
 function gif() {
     local input_file="$1"
     local output_file="$2"
-    
+
     # Set up colors for interactive terminals
     if [ -t 1 ]; then
         yellow="\033[1;33m"
@@ -687,7 +687,7 @@ function gif() {
         cyan=""
         reset=""
     fi
-    
+
     # Display help if no input file provided
     if [ -z "$input_file" ]; then
         echo -e "${yellow}Error: Input file is required${reset}" >&2
@@ -696,28 +696,28 @@ function gif() {
         echo -e "${yellow}Usage: gif input_file [output_file]${reset}" >&2
         return 1
     fi
-    
+
     # If output file not provided, use input name with .gif extension
     if [ -z "$output_file" ]; then
         # Get base name of input file without extension
         local base_name="${input_file%.*}"
         output_file="${base_name}.gif"
     fi
-    
+
     # Ensure the input file exists
     if [ ! -f "$input_file" ]; then
         echo -e "${red}Error: Input file does not exist ${cyan}'$input_file'${reset}" >&2
         echo -e "${yellow}Usage: gif input_file [output_file]${reset}" >&2
         return 1
     fi
-    
+
     echo "Converting $input_file to $output_file..."
     ffmpeg -i "$input_file" \
         -filter_complex "[0:v] fps=10,scale=640:-1:flags=lanczos,palettegen [p]; \
         [0:v] fps=10,scale=640:-1:flags=lanczos [x]; \
         [x][p] paletteuse" \
         "$output_file"
-    
+
     # Check if conversion was successful
     if [ $? -eq 0 ]; then
         echo "Conversion completed successfully"
