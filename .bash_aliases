@@ -462,7 +462,7 @@ function ai() {
 }
 
 function ai2() {
-  codex -a never "$@"
+  codex full-auto "$@"
 }
 
 ## Miscellaneous
