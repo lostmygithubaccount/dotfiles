@@ -465,6 +465,10 @@ function ai2() {
   codex --full-auto "$@"
 }
 
+function ai3() {
+  cursor-agent --force "$@"
+}
+
 ## Miscellaneous
 function temp() {
   v temp.md
