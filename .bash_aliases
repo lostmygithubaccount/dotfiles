@@ -318,8 +318,11 @@ function cat() {
 }
 
 function tree() {
-  #command tree -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
-  command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore --gitfile .rgignore "$@"
+  if [ -f .rgignore ]; then
+    command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore --gitfile .rgignore "$@"
+  else
+    command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore "$@"
+  fi
 }
 
 function t() {
