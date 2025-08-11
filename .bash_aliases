@@ -186,7 +186,7 @@ function ws() {
 }
 
 function pri() {
-  dkdc files open pri.md
+  v $FILES/pri.md
 }
 
 function todo() {
@@ -198,7 +198,7 @@ function todo() {
 }
 
 function notes() {
-  dkdc files open notes.md
+  v $FILES/notes.md
 }
 
 ## Core functionality
