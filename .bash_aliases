@@ -41,7 +41,9 @@ else
     export LS_COLORS="di=01;36:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;34:cd=01;34:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 fi
 
-export PATH="$GHH/bin:$PATH"
+export BIN="$GHH/bin"
+export PATH="$BIN:$PATH"
+export FILES="$GHH/files"
 export LAKE="$GHH/lake"
 
 mkdir -p $LAKE
@@ -164,7 +166,7 @@ function dotfiles() {
 }
 
 function files() {
-  dkdc files "$@"
+  cd $FILES
 }
 
 function p() {
@@ -189,9 +191,9 @@ function pri() {
 
 function todo() {
   if [[ "$MACHINE_TYPE" == "WORK" ]]; then
-    dkdc files open work.md
+    v $FILES/work.md
   else
-    dkdc files open life.md
+    v $FILES/life.md
   fi
 }
 
@@ -479,7 +481,7 @@ function temp() {
 }
 
 function vtemp() {
-    dkdc files open temp.md
+    v $FILES/temp.md
 }
 
 function rand() {
