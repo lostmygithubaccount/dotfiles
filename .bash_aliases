@@ -318,7 +318,8 @@ function cat() {
 }
 
 function tree() {
-  command tree -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+  #command tree -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+  command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore --gitfile .rgignore "$@"
 }
 
 function t() {
@@ -462,7 +463,7 @@ function ai() {
 }
 
 function ai2() {
-  codex --full-auto "$@"
+  codex -a never "$@"
 }
 
 function ai3() {
