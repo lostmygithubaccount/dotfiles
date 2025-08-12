@@ -321,9 +321,9 @@ function cat() {
 
 function tree() {
   if [ -f .rgignore ]; then
-    command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore --gitfile .rgignore "$@"
+    command tree -F --gitignore --gitfile .rgignore "$@"
   else
-    command tree -F -I venv -I .git -I target -I dist -I ascend-out --gitignore "$@"
+    command tree -F --gitignore "$@"
   fi
 }
 
