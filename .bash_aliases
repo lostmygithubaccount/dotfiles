@@ -475,6 +475,10 @@ function ai3() {
   cursor-agent --force "$@"
 }
 
+function ai4() {
+  gemini --yolo "$@"
+}
+
 ## Miscellaneous
 function temp() {
   v temp.md
