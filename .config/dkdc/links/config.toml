@@ -151,4 +151,4 @@ netlify = "https://app.netlify.com"
 
 initiatives = "https://github.com/orgs/ascend-io/projects/6/views/37"
 
-gantt == "https://github.com/orgs/ascend-io/projects/6/views/47"
+gantt = "https://github.com/orgs/ascend-io/projects/6/views/47"
