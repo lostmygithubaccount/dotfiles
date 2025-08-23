@@ -108,6 +108,18 @@ vim.api.nvim_create_user_command('TreeClose', 'NvimTreeClose', {})
 -- augroups
 vim.api.nvim_create_augroup("AutoFormat", {})
 
+-- otter (required by quarto)
+require('otter').setup {
+    lsp = {
+        hover = {
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        },
+    },
+    buffers = {
+        set_filetype = false,
+    },
+}
+
 -- quarto
 require('quarto').setup {
     debug = true,
