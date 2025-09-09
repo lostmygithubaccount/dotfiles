@@ -1,6 +1,6 @@
 [groups]
 home = ["ym", "e", "c"]
-second = ["basecamp", "demo", "gantt"]
+second = ["product_dev", "basecamp", "demo", "gantt", "me"]
 
 [aliases]
 i = "ibis"
@@ -166,3 +166,5 @@ demo = "https://demo.app.ascend.io"
 gantt = "https://github.com/orgs/ascend-io/projects/6/views/47"
 
 me = "https://github.com/orgs/ascend-io/projects/6/views/24"
+
+product_dev = "https://product.app-dev.ascend.io"
