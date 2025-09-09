@@ -17,7 +17,6 @@ ym = "youtubemusic"
 io = "dkdcio"
 oe = "ottos-expeditions"
 key = "keyboard"
-demo = "ottos-expeditions"
 read = "kindle"
 chat = "copilot"
 music = "youtubemusic"
@@ -121,7 +120,7 @@ recordings = "https://drive.google.com/drive/folders/1lmeDYAw9VsmayVXm9cOCzU-xpj
 
 motherduck = "https://app.motherduck.com"
 
-ottos-expeditions = "https://demo.app.ascend.io"
+ottos-expeditions = "https://ottos-expeditions.app-dev.ascend.io"
 
 ## misc
 mobilerouter = "http://192.168.8.1"
@@ -158,8 +157,12 @@ netlify = "https://app.netlify.com"
 
 initiatives = "https://github.com/orgs/ascend-io/projects/6/views/37"
 
-gantt = "https://github.com/orgs/ascend-io/projects/6/views/47"
-
 launchdarkly = "https://app.launchdarkly.com/projects/inception/flags?env=production&env=production&selected-env=production"
 
 gusto = "https://app.gusto.com"
+
+basecamp = "https://basecamp.app.ascend.io"
+demo = "https://demo.app.ascend.io"
+gantt = "https://github.com/orgs/ascend-io/projects/6/views/47"
+
+me = "https://github.com/orgs/ascend-io/projects/6/views/24"
