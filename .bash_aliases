@@ -178,7 +178,7 @@ function init {
 }
 
 function workspaces() {
-  cd $DEV/workspaces
+  cd $AIO/workspaces
 }
 
 function ws() {
