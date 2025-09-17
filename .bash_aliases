@@ -201,6 +201,14 @@ function notes() {
   v $FILES/notes.md
 }
 
+function readinglist() {
+  v $FILES/readinglist.md
+}
+
+function rlist() {
+  readinglist
+}
+
 ## Core functionality
 function e() {
     exit
