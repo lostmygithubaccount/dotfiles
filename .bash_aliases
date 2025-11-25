@@ -12,6 +12,9 @@ export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH" # go stuff
 export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
 
+## TODO: fix underlying fnm shenanigans
+alias claude="/Users/cody/.local/bin/claude"
+
 ## Editor
 export EDITOR="nvim"
 export VISUAL=nvim
