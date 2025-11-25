@@ -37,6 +37,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- vim.cmd [[colorscheme tokyonight]]
 vim.cmd [[colorscheme github_dark_high_contrast]]
 
+-- transparent background (allows terminal background to show through)
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE", ctermbg = "NONE" })
+
 -- typos
 vim.cmd("command! W w")
 vim.cmd("command! Wq wq")
