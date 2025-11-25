@@ -137,5 +137,8 @@ return {
 
     -- Close pane
     { key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = true } },
+
+    -- Toggle pane zoom (fullscreen focused pane)
+    { key = 'Return', mods = 'CMD|SHIFT', action = act.TogglePaneZoomState },
   },
 }
