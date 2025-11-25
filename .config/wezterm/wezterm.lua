@@ -135,6 +135,10 @@ return {
     { key = '[', mods = 'CMD', action = act.ActivatePaneDirection 'Prev' },
     { key = ']', mods = 'CMD', action = act.ActivatePaneDirection 'Next' },
 
+    -- Swap panes (interactive: shows labels to pick which pane to swap with)
+    { key = '[', mods = 'CMD|OPT', action = act.PaneSelect { mode = 'SwapWithActive' } },
+    { key = ']', mods = 'CMD|OPT', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
+
     -- Close pane
     { key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = true } },
 
