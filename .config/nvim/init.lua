@@ -224,9 +224,7 @@ require('lspconfig').rust_analyzer.setup {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     settings = {
         ['rust-analyzer'] = {
-            checkOnSave = {
-                command = "clippy",
-            },
+            checkOnSave = true
         }
     }
 }
