@@ -143,5 +143,8 @@ return {
 
     -- Toggle pane zoom (fullscreen focused pane)
     { key = 'Return', mods = 'CMD|SHIFT', action = act.TogglePaneZoomState },
+
+    -- Send ESC+Enter (useful for terminal apps that need literal newline)
+    { key = 'Enter', mods = 'SHIFT', action = act.SendString '\x1b\r' },
   },
 }
