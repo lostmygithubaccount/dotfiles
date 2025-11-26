@@ -41,6 +41,9 @@ export BASECAMP="ascend-io/basecamp"
 autoload -Uz compinit
 compinit
 
+# Enable vi mode for command line editing
+bindkey -v
+
 # kubectl autocomplete
 if command -v kubectl >/dev/null 2>&1; then
     source <(kubectl completion zsh)
