@@ -1,0 +1,74 @@
+# Ghostty config: violet/purple + cyan theme (matching WezTerm)
+
+# Background and opacity
+background = 1a1a2e
+background-opacity = 0.5
+
+# Foreground
+foreground = e0e0ff
+
+# Cursor: cyan
+cursor-color = 87ffff
+cursor-text = 1a1a2e
+
+# Selection: purple
+selection-background = af87ff
+selection-foreground = 1a1a2e
+
+# Window padding (8px all sides)
+window-padding-x = 8
+window-padding-y = 8
+
+# Tab bar: auto-hide when only one tab
+window-show-tab-bar = auto
+
+# Unfocused split dimming (approximates brightness 0.6)
+unfocused-split-opacity = 0.6
+
+# Split divider color: violet
+split-divider-color = 875fff
+
+# ANSI color palette
+palette = 0=1a1a2e
+palette = 1=ff5f87
+palette = 2=87ffaf
+palette = 3=ffff87
+palette = 4=875fff
+palette = 5=af87ff
+palette = 6=87ffff
+palette = 7=ffffff
+
+# Bright colors
+palette = 8=4a4a5e
+palette = 9=ff87af
+palette = 10=afffcf
+palette = 11=ffffaf
+palette = 12=af87ff
+palette = 13=d7afff
+palette = 14=afffff
+palette = 15=ffffff
+
+# Keybindings
+
+# Split panes
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Navigate panes (vim-style hjkl)
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+l=goto_split:right
+keybind = cmd+shift+k=goto_split:up
+keybind = cmd+shift+j=goto_split:down
+
+# Cycle panes
+keybind = cmd+left_bracket=goto_split:previous
+keybind = cmd+right_bracket=goto_split:next
+
+# Close pane
+keybind = cmd+w=close_surface
+
+# Toggle pane zoom (fullscreen focused pane)
+keybind = cmd+shift+enter=toggle_split_zoom
+
+# Send ESC+Enter (useful for terminal apps that need literal newline)
+keybind = shift+enter=text:\x1b\r
