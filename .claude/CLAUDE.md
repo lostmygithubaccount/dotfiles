@@ -12,7 +12,7 @@ Always respond in Markdown format using sentence casing for headings and in gene
 
 ### Colors
 
-I prefer a violet/purple neon + cyan accent color scheme for dark mode in general.
+I prefer a violet/purple neon + cyan accent color scheme, and dark mode in general.
 
 ### Use colons (:) instead of dashes/hyphens (-) for lists
 
