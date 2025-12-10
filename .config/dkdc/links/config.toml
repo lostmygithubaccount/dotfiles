@@ -51,6 +51,7 @@ ld = "launchdarkly"
 
 [links]
 # ascend dev
+dev = "https://instance.app.local.ascend.dev/homepage"
 deva = "https://deva-app.local.ascend.dev"
 devb = "https://devb-app.local.ascend.dev"
 devc = "https://devc-app.local.ascend.dev"
