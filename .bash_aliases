@@ -160,6 +160,10 @@ funciton posts () {
     blog
 }
 
+function wip() {
+    cd $GHH/dkdc.dev/content/wip
+}
+
 function dkdc.io () {
     cd $GHH/dkdc.io
 }
