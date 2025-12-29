@@ -24,7 +24,13 @@ cd "$CLONE_DIR"
 git add -A
 if git diff --cached --quiet; then
     echo "No changes to commit"
+    cd "$SCRIPT_DIR"
+    rm -rf "$CLONE_DIR"
     exit 0
 fi
 git commit -m "sync: update from codai"
 git push
+
+# 6. Cleanup
+cd "$SCRIPT_DIR"
+rm -rf "$CLONE_DIR"
