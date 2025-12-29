@@ -1,13 +1,13 @@
-# Cody's dotfiles
+# codai
 
-The purpose of this repository is to provide my development environment as code.
+Cody but AI. This is primarily dotfiles for agentic software engineering (ASE).
 
 ## Setup
 
 To install dependencies and setup your home directory for the first time, run:
 
 ```
-./setup.sh
+./setup
 ```
 
 ## Sync from dotfiles repo to $HOME
@@ -15,11 +15,5 @@ To install dependencies and setup your home directory for the first time, run:
 To update your home directory with the latest changes from this repository, run:
 
 ```
-./bin/sync.py
+./bin/sync
 ```
-
-## Coding
-
-ALWAYS edit files in this repository under version control. Then sync them to your home directory using the command above (ideally after sourcing/running in a shell and testing first).
-
-DO NOT sync on behalf of the user.

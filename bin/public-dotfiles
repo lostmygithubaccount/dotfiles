@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+
+REPO="lostmygithubaccount/dotfiles"
+CLONE_DIR="dotfiles"
+SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+cd "$SCRIPT_DIR"
+
+# 1. Remove existing clone
+rm -rf "$CLONE_DIR"
+
+# 2. Fresh clone via gh
+gh repo clone "$REPO" "$CLONE_DIR"
+
+# 3. Remove all files except .git
+find "$CLONE_DIR" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
+# 4. Copy everything from codai root (except .git and dotfiles/)
+rsync -a --exclude='.git' --exclude='dotfiles' "$SCRIPT_DIR/" "$CLONE_DIR/"
+
+# 5. Commit and push
+cd "$CLONE_DIR"
+git add -A
+if git diff --cached --quiet; then
+    echo "No changes to commit"
+    exit 0
+fi
+git commit -m "sync: update from codai"
+git push

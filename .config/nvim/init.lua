@@ -328,6 +328,14 @@ vim.filetype.add({
     },
     pattern = {
         [".*%.sql%.jinja"] = "sql",
+        -- shebang detection for uv scripts
+        [".*"] = {
+            priority = -math.huge,
+            function(path, bufnr)
+                local line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
+                if line:match("^#!.*uv") then return "python" end
+            end,
+        },
     },
     filename = {
         ["setup"] = "python", -- Add this line

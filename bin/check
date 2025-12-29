@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Run code quality checks
+
+set -euo pipefail
+
+echo "🔍 Running code quality checks..."
+echo ""
+
+# Track if any checks fail
+FAILED=0
+
+# Python checks
+echo "🐍 Checking Python code..."
+uv run ruff check --fix . || FAILED=1
+uv run ruff format . || FAILED=1
+
+if [ $FAILED -eq 0 ]; then
+    echo "✅ All checks passed!"
+else
+    echo "❌ Some checks failed!"
+    exit 1
+fi
+echo ""
