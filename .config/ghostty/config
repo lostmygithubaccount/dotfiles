@@ -1,5 +1,8 @@
 # Ghostty config: violet/purple + cyan theme (matching WezTerm)
 
+# Use the latest version
+auto-update-channel = tip
+
 # Background and opacity
 background = 1a1a2e
 background-opacity = 0.5
