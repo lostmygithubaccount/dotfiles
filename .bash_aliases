@@ -84,6 +84,10 @@ function dw() {
     delete-workspace "$@"
 }
 
+function dwe() {
+    delete-workspace -y && exit "$@"
+}
+
 function kt() {
     kubectl "$@"
 }
