@@ -68,6 +68,18 @@ function ws() {
     workspaces
 }
 
+function cw() {
+    create-workspace "$@"
+}
+
+function bw() {
+    boot-workspace "$@"
+}
+
+function dw() {
+    delete-workspace "$@"
+}
+
 function kt() {
     kubectl "$@"
 }
