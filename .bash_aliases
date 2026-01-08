@@ -76,6 +76,10 @@ function bw() {
     boot-workspace "$@"
 }
 
+function kw() {
+    tmux kill-session "$@"
+}
+
 function dw() {
     delete-workspace "$@"
 }
