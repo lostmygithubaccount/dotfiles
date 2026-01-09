@@ -76,6 +76,10 @@ function bw() {
     boot-workspace "$@"
 }
 
+function oa() {
+    open $APP
+}
+
 function kw() {
     tmux kill-session "$@"
 }
