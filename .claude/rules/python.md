@@ -1,0 +1,3 @@
+- always use `uv`
+    - `uv run python`
+    - `uv run pip` (this should be rarely needed and should not be used to modify environment packages)
