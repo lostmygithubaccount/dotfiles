@@ -12,6 +12,7 @@ Sync dotfiles between repository and home directory.
 
 # Imports
 import filecmp
+import fnmatch
 import os
 import shutil
 import subprocess
@@ -49,10 +50,15 @@ console = Console()
 # Constants
 DOTFILES_DIR = Path(__file__).parent.parent
 HOME_DIR = Path.home()
-IGNORE_DIRS = {"bin", "tasks"}  # Only ignore these specific directories
 
-# Defensive ignores for common cache/build directories
+# Ignore patterns (gitignore-style: /prefix means root-only, otherwise matches anywhere)
 IGNORE_PATTERNS = [
+    # Root-only ignores
+    "/.git",
+    "/bin",
+    "/tasks",
+    "/CLAUDE.md",
+    # Anywhere ignores
     ".ruff_cache",
     "__pycache__",
     ".pytest_cache",
@@ -70,47 +76,21 @@ IGNORE_PATTERNS = [
 
 
 # Functions
-def should_ignore_root_item(path: Path, base_path: Path) -> bool:
-    """Check if a root-level item should be ignored."""
+def should_ignore(path: Path, base_path: Path) -> bool:
+    """Check if a path should be ignored based on IGNORE_PATTERNS."""
     rel_path = path.relative_to(base_path)
-
-    # Only check root level items
-    if len(rel_path.parts) == 1:
-        name = rel_path.parts[0]
-        # Ignore .git specifically and our management directories
-        if name == ".git" or name in IGNORE_DIRS:
-            return True
-        # Check against defensive ignore patterns
-        for pattern in IGNORE_PATTERNS:
-            if pattern.endswith("*"):
-                if name.endswith(pattern[:-1]):
-                    return True
-            elif "*" in pattern:
-                import fnmatch
-
-                if fnmatch.fnmatch(name, pattern):
-                    return True
-            elif name == pattern:
-                return True
-        # Include all dotfiles/directories at root level
-        if name.startswith("."):
-            return False
-        # Include non-dot files at root (like CLAUDE.md, AGENTS.md, setup)
-        return False
-
-    # For nested items, check if they match ignore patterns
     name = rel_path.name
-    for pattern in IGNORE_PATTERNS:
-        if pattern.endswith("*"):
-            if name.endswith(pattern[:-1]):
-                return True
-        elif "*" in pattern:
-            import fnmatch
+    is_root = len(rel_path.parts) == 1
 
-            if fnmatch.fnmatch(name, pattern):
+    for pattern in IGNORE_PATTERNS:
+        # Root-only patterns (start with /)
+        if pattern.startswith("/"):
+            if is_root and fnmatch.fnmatch(name, pattern[1:]):
                 return True
-        elif name == pattern:
+        # Anywhere patterns
+        elif fnmatch.fnmatch(name, pattern):
             return True
+
     return False
 
 
@@ -124,13 +104,13 @@ def get_relative_files(base_path: Path) -> list[Path]:
         # Filter directories at root level only
         if root_path == base_path:
             dirs[:] = [
-                d for d in dirs if not should_ignore_root_item(base_path / d, base_path)
+                d for d in dirs if not should_ignore(base_path / d, base_path)
             ]
 
         # Add all files in allowed directories
         for filename in filenames:
             file_path = root_path / filename
-            if not should_ignore_root_item(file_path, base_path):
+            if not should_ignore(file_path, base_path):
                 rel_path = file_path.relative_to(base_path)
                 files.append(rel_path)
 
