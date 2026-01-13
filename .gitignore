@@ -49,6 +49,8 @@ ascend-out
 logs
 
 # personal conventions
+issue.md
+pr.md
 out.txt
 out.csv
 out.json
