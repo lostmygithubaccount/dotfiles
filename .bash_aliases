@@ -41,7 +41,7 @@ if command -v fnm >/dev/null 2>&1; then
 fi
 
 ### TODO: fix underlying fnm shenanigans
-alias claude="/Users/cody/.local/bin/claude"
+#alias claude="/Users/cody/.local/bin/claude"
 
 ## functions
 function ascendio() {
