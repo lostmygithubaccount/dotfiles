@@ -12,7 +12,7 @@ Use:
 - Claude Code docs: https://code.claude.com/docs/llms.txt
 - Claude developer docs: https://platform.claude.com/llms.txt
 
-to progressively discover Claude Code documentation as needed, especially on skills.
+to progressively discover Claude Code documentation as needed; especially on skills, rules, commands.
 
 ## Style
 
