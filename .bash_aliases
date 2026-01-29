@@ -599,7 +599,7 @@ function ai() {
 }
 
 function ai2() {
-    codex -a never "$@"
+    codex --full-auto "$@"
 }
 
 function ai3() {
