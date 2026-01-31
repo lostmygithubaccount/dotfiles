@@ -1,0 +1,170 @@
+# Transparent theme with purple tint for Helix
+# Based on catppuccin with transparency and purple accents
+
+# UI - transparent background, purple accents
+"ui.background" = { fg = "lavender" }
+"ui.background.separator" = { fg = "surface1" }
+"ui.text" = { fg = "text" }
+"ui.text.focus" = { fg = "text" }
+"ui.text.inactive" = { fg = "overlay1" }
+
+"ui.menu" = { fg = "text", bg = "surface0" }
+"ui.menu.selected" = { fg = "text", bg = "mauve" }
+"ui.menu.scroll" = { fg = "lavender" }
+
+"ui.linenr" = { fg = "surface1" }
+"ui.linenr.selected" = { fg = "lavender", modifiers = ["bold"] }
+
+"ui.popup" = { fg = "text", bg = "surface0" }
+"ui.popup.info" = { fg = "text", bg = "surface0" }
+"ui.window" = { fg = "mauve" }
+
+"ui.selection" = { bg = "purple_bg" }
+"ui.selection.primary" = { bg = "purple_selection" }
+
+"ui.cursor" = { modifiers = ["reversed"] }
+"ui.cursor.match" = { fg = "peach", modifiers = ["bold"] }
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { bg = "purple_line" }
+
+"ui.statusline" = { fg = "text", bg = "purple_status" }
+"ui.statusline.inactive" = { fg = "overlay0", bg = "mantle" }
+"ui.statusline.normal" = { fg = "base", bg = "mauve", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "base", bg = "green", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "base", bg = "lavender", modifiers = ["bold"] }
+
+"ui.help" = { fg = "text", bg = "surface0" }
+"ui.gutter" = { }
+"ui.virtual.ruler" = { bg = "purple_line" }
+"ui.virtual.whitespace" = { fg = "surface1" }
+"ui.virtual.indent-guide" = { fg = "surface0" }
+"ui.virtual.inlay-hint" = { fg = "overlay0", bg = "mantle" }
+"ui.virtual.jump-label" = { fg = "peach", modifiers = ["bold"] }
+"ui.virtual.wrap" = { fg = "surface1" }
+
+# Syntax highlighting - purple-tinted
+"attribute" = { fg = "yellow" }
+"type" = { fg = "lavender" }
+"type.builtin" = { fg = "lavender", modifiers = ["italic"] }
+"type.enum" = { fg = "lavender" }
+"type.enum.variant" = { fg = "peach" }
+"constructor" = { fg = "sapphire" }
+"constant" = { fg = "peach" }
+"constant.builtin" = { fg = "peach", modifiers = ["italic"] }
+"constant.character" = { fg = "teal" }
+"constant.character.escape" = { fg = "pink" }
+"constant.numeric" = { fg = "peach" }
+"string" = { fg = "green" }
+"string.regexp" = { fg = "pink" }
+"string.special" = { fg = "teal" }
+
+"comment" = { fg = "overlay0", modifiers = ["italic"] }
+"comment.line" = { fg = "overlay0", modifiers = ["italic"] }
+"comment.block" = { fg = "overlay0", modifiers = ["italic"] }
+"comment.block.documentation" = { fg = "overlay1", modifiers = ["italic"] }
+
+"variable" = { fg = "text" }
+"variable.builtin" = { fg = "red", modifiers = ["italic"] }
+"variable.parameter" = { fg = "maroon", modifiers = ["italic"] }
+"variable.other.member" = { fg = "teal" }
+"label" = { fg = "sapphire" }
+
+"punctuation" = { fg = "overlay2" }
+"punctuation.bracket" = { fg = "overlay2" }
+"punctuation.delimiter" = { fg = "overlay2" }
+"punctuation.special" = { fg = "sky" }
+
+"keyword" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control.conditional" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control.repeat" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control.import" = { fg = "pink", modifiers = ["italic"] }
+"keyword.control.return" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control.exception" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.operator" = { fg = "mauve" }
+"keyword.directive" = { fg = "pink" }
+"keyword.function" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.storage" = { fg = "mauve" }
+"keyword.storage.type" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.storage.modifier" = { fg = "mauve", modifiers = ["italic"] }
+
+"operator" = { fg = "sky" }
+"function" = { fg = "blue" }
+"function.builtin" = { fg = "blue", modifiers = ["italic"] }
+"function.macro" = { fg = "teal" }
+"function.special" = { fg = "blue" }
+"function.method" = { fg = "blue" }
+"tag" = { fg = "mauve" }
+"tag.builtin" = { fg = "mauve" }
+"namespace" = { fg = "lavender", modifiers = ["italic"] }
+"special" = { fg = "sapphire" }
+
+"markup.heading" = { fg = "mauve", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "peach", modifiers = ["bold"] }
+"markup.list" = { fg = "mauve" }
+"markup.list.numbered" = { fg = "mauve" }
+"markup.list.unnumbered" = { fg = "mauve" }
+"markup.bold" = { fg = "peach", modifiers = ["bold"] }
+"markup.italic" = { fg = "pink", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link" = { fg = "blue", underline = { style = "line" } }
+"markup.link.url" = { fg = "rosewater", underline = { style = "line" } }
+"markup.link.label" = { fg = "lavender" }
+"markup.link.text" = { fg = "blue" }
+"markup.quote" = { fg = "pink", modifiers = ["italic"] }
+"markup.raw" = { fg = "green" }
+"markup.raw.block" = { fg = "green" }
+"markup.raw.inline" = { fg = "green" }
+
+"diff.plus" = { fg = "green" }
+"diff.minus" = { fg = "red" }
+"diff.delta" = { fg = "blue" }
+"diff.delta.moved" = { fg = "blue", modifiers = ["italic"] }
+
+# Diagnostics
+"diagnostic.info" = { underline = { color = "sapphire", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "teal", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+"info" = { fg = "sapphire" }
+"hint" = { fg = "teal" }
+"warning" = { fg = "yellow" }
+"error" = { fg = "red" }
+
+[palette]
+# Catppuccin Mocha base colors
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+# Custom purple tints - these give Helix its distinct look
+purple_line = "#2a2640"
+purple_selection = "#3d3663"
+purple_bg = "#2e2950"
+purple_status = "#1e1a30"

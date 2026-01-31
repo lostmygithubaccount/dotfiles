@@ -117,8 +117,8 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 ### editor
-export EDITOR="nvim"
-export VISUAL=nvim
+export EDITOR="hx"
+export VISUAL=hx
 
 ### python
 export PYTHONBREAKPOINT="IPython.embed"
@@ -313,7 +313,12 @@ function drafts() {
 }
 
 function v() {
-    nvim "$@"
+    #nvim "$@"
+    hx "$@"
+}
+
+function h() {
+    hx "$@"
 }
 
 function vt() {
