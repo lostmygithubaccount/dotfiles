@@ -1,0 +1,60 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "tomli_w",
+# ]
+# ///
+"""
+Sort links config TOML alphabetically by key within each section.
+"""
+
+import tomllib
+from pathlib import Path
+
+import tomli_w
+
+DOTFILES_DIR = Path(__file__).parent.parent
+
+FILES = [
+    DOTFILES_DIR / ".config/dkdc/links/config.toml",
+]
+
+
+def sort_toml(path: Path) -> bool:
+    """Sort all keys in a TOML file alphabetically. Returns True if changed."""
+    original = path.read_text()
+    data = tomllib.loads(original)
+
+    sorted_data = {
+        section: dict(sorted(values.items())) for section, values in data.items()
+    }
+
+    output = tomli_w.dumps(sorted_data)
+
+    if output == original:
+        print(f"  {path.relative_to(DOTFILES_DIR)} (already sorted)")
+        return False
+
+    path.write_text(output)
+    print(f"  {path.relative_to(DOTFILES_DIR)} (sorted)")
+    return True
+
+
+def main() -> None:
+    print("Sorting TOML files...")
+    changed = 0
+    for path in FILES:
+        if not path.exists():
+            print(f"  {path.relative_to(DOTFILES_DIR)} (not found, skipping)")
+            continue
+        if sort_toml(path):
+            changed += 1
+    if changed:
+        print(f"Done — {changed} file(s) updated")
+    else:
+        print("Done — everything already sorted")
+
+
+if __name__ == "__main__":
+    main()

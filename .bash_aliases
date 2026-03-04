@@ -1,3 +1,12 @@
+export CODE=$HOME/code
+
+### homebrew
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+else
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+fi
+
 # =============================================================================
 # ascend (work)
 # =============================================================================
@@ -10,8 +19,8 @@ else
 fi
 
 ## exports
-export AIO=$HOME/code/ascend-io
-export ASCEND_INFRA="$HOME/code/ascend-io/infra"
+export AIO=$CODE/ascend-io
+export ASCEND_INFRA=$AIO/infra
 
 ### repos
 export PRODUCT="ascend-io/product"
@@ -27,13 +36,6 @@ export BASECAMP="ascend-io/basecamp"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
 
-### homebrew
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-else
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-fi
-
 ### misc
 ulimit -n 2560 # some bizarre issue
 if command -v fnm >/dev/null 2>&1; then
@@ -42,10 +44,11 @@ fi
 
 ### TODO: fix underlying fnm shenanigans
 #alias claude="/Users/cody/.local/bin/claude"
+alias codex="/opt/homebrew/bin/codex"
 
 ## functions
 function ascendio() {
-    cd $HOME/code/ascend-io
+    cd $AIO
 }
 
 function aio() {
@@ -109,30 +112,33 @@ function kpro() {
 # =============================================================================
 
 ## exports
-
-### path
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+### locations
+export GHH=$CODE/lostmygithubaccount
+export DKDC=$GHH/dkdc
+export WEBSITES=$DKDC/websites
+export BIN=$DKDC/bin/public
+export FILES=$DKDC/files
+export LAKE=$DKDC/lake
+export DESK=$HOME/Desktop
+export DOWN=$HOME/Downloads
+export DOCS=$HOME/Documents
 
 ### editor
-export EDITOR="hx"
-export VISUAL=hx
+export EDITOR=nvim
+export VISUAL=nvim
 
 ### python
 export PYTHONBREAKPOINT="IPython.embed"
 export PYTHONDONTWRITEBYTECODE=1
 export OLLAMA_HOME="$HOME/.ollama"
 
-### locations
-export GHH=$HOME/code/lostmygithubaccount
-export DKDC=$GHH/dkdc
-export BIN="$GHH/bin"
-export FILES="$GHH/files"
-export LAKE="$GHH/lake"
-
-mkdir -p $LAKE
+### path
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$BIN:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 ### docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
@@ -144,10 +150,7 @@ else
     export LS_COLORS="di=01;36:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;34:cd=01;34:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 fi
 
-export PATH="$BIN:$PATH"
-
 ## functions
-
 ### config
 function ali() {
     v $HOME/.bash_aliases
@@ -179,56 +182,48 @@ function uvrc() {
 }
 
 ### movement
-function data() {
-    cd $HOME/data
-}
-
-function profiles() {
-    cd $HOME/profiles
-}
-
-function secrets() {
-    cd $HOME/secrets
-}
-
-function vaults() {
-    cd $HOME/vaults
-}
-
 function down() {
-    cd $HOME/Downloads
+    cd $DOWN
 }
 
 function desk() {
-    cd $HOME/Desktop
+    cd $DESK
 }
 
 function docs() {
-    cd $HOME/Documents
+    cd $DOCS
 }
 
 function ghh() {
     cd $GHH
 }
 
+function cdkdc() {
+    cd $DKDC
+}
+
+function cdk() {
+    cdkdc
+}
+
+function cdc() {
+    cdkdc
+}
+
 function bin() {
-    cd $GHH/bin
+    cd $BIN
 }
 
 function lake() {
     cd $LAKE
 }
 
-function websites() {
-    cd $DKDC/websites
-}
-
 function dkdc.dev() {
-    cd $GHH/dkdc.dev
+    cd $WEBSITES/dkdc.dev
 }
 
 function blog() {
-    cd $GHH/dkdc.dev/content/posts
+    cd $WEBSITES/dkdc.dev/content/posts
 }
 
 function posts() {
@@ -236,15 +231,19 @@ function posts() {
 }
 
 function wip() {
-    cd $GHH/dkdc.dev/content/wip
+    cd $WEBSITES/dkdc.dev/content/wip
 }
 
 function dkdc.io() {
-    cd $GHH/dkdc.io
+    cd $WEBSITES/dkdc.io
 }
 
 function dotfiles() {
-    cd $AIO/codai
+    if [[ "$MACHINE_TYPE" == "WORK" ]]; then
+        cd $DKDC/dotfiles
+    else
+        cd $DKDC/dotfiles
+    fi
 }
 
 function files() {
@@ -255,20 +254,16 @@ function pri() {
     v $FILES/pri.md
 }
 
-function todo() {
-    if [[ "$MACHINE_TYPE" == "WORK" ]]; then
-        v $FILES/work.md
-    else
-        v $FILES/life.md
-    fi
-}
-
 function notes() {
     v $FILES/notes.md
 }
 
 function readinglist() {
     v $FILES/readinglist.md
+}
+
+function readlist() {
+    readinglist
 }
 
 function rlist() {
@@ -287,6 +282,10 @@ function ....() {
     cd ../../..
 }
 
+function .....() {
+    cd ../../../..
+}
+
 ### core
 function e() {
     exit
@@ -297,7 +296,11 @@ function c() {
 }
 
 function cdesk() {
-    rm -r $HOME/Desktop/*
+    rm -r $DESK/*
+}
+
+function cdown() {
+    rm -r $DOWN/*
 }
 
 function s() {
@@ -313,8 +316,8 @@ function drafts() {
 }
 
 function v() {
-    #nvim "$@"
-    hx "$@"
+    nvim "$@"
+    #hx "$@"
 }
 
 function h() {
@@ -389,9 +392,9 @@ function l() {
     less "$@"
 }
 
-function cat() {
-    bat --color=always "$@"
-}
+# function cat() {
+#     bat --color=always "$@"
+# }
 
 function tree() {
     if [ -f .rgignore ]; then
@@ -604,11 +607,16 @@ function ai() {
 }
 
 function ai2() {
-    codex --full-auto "$@"
+    #codex -a never "$@"
+    codex --dangerously-bypass-approvals-and-sandbox "$@"
 }
 
 function ai3() {
     gemini --yolo "$@"
+}
+
+function ai4() {
+    copilot --allow-all-tools "$@"
 }
 
 ### python

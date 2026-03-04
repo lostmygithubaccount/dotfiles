@@ -4,6 +4,9 @@
 # mac
 .DS_STORE
 
+# secret files
+*.pem
+
 # vim
 *.swp
 

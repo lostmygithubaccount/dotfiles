@@ -43,6 +43,29 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE", ctermbg = "NONE" })
 
+-- better syntax highlighting (purple-tinted like helix)
+vim.api.nvim_set_hl(0, "Comment", { fg = "#6c7086", italic = true })
+vim.api.nvim_set_hl(0, "Keyword", { fg = "#cba6f7", italic = true })
+vim.api.nvim_set_hl(0, "Conditional", { fg = "#cba6f7", italic = true })
+vim.api.nvim_set_hl(0, "Repeat", { fg = "#cba6f7", italic = true })
+vim.api.nvim_set_hl(0, "Exception", { fg = "#cba6f7", italic = true })
+vim.api.nvim_set_hl(0, "Include", { fg = "#f5c2e7", italic = true })
+vim.api.nvim_set_hl(0, "Function", { fg = "#89b4fa" })
+vim.api.nvim_set_hl(0, "String", { fg = "#a6e3a1" })
+vim.api.nvim_set_hl(0, "Number", { fg = "#fab387" })
+vim.api.nvim_set_hl(0, "Boolean", { fg = "#fab387", italic = true })
+vim.api.nvim_set_hl(0, "Type", { fg = "#b4befe" })
+vim.api.nvim_set_hl(0, "Constant", { fg = "#fab387" })
+vim.api.nvim_set_hl(0, "Operator", { fg = "#89dceb" })
+vim.api.nvim_set_hl(0, "Special", { fg = "#74c7ec" })
+vim.api.nvim_set_hl(0, "Identifier", { fg = "#cdd6f4" })
+vim.api.nvim_set_hl(0, "Statement", { fg = "#cba6f7", italic = true })
+vim.api.nvim_set_hl(0, "PreProc", { fg = "#f5c2e7" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#3d3663" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2640" })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#45475a" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#b4befe", bold = true })
+
 -- typos
 vim.cmd("command! W w")
 vim.cmd("command! Wq wq")
@@ -324,7 +347,6 @@ vim.filetype.add({
     extension = {
         lock = "toml",
         mdx = "markdown",
-        setup = "python",
     },
     pattern = {
         [".*%.sql%.jinja"] = "sql",
@@ -338,7 +360,6 @@ vim.filetype.add({
         },
     },
     filename = {
-        ["setup"] = "python", -- Add this line
     }
 })
 
